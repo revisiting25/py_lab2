@@ -4,9 +4,9 @@ class Shape:
         self._x = x
         self._y = y
 
-    def x(self):
+    def get_x(self):
         return self._x
 
-    def y(self):
+    def get_y(self):
         return self._y
 

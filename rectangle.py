@@ -1,3 +1,4 @@
+import math
 from shape import Shape
 
 class Rectangle(Shape):
@@ -6,3 +7,9 @@ class Rectangle(Shape):
 
         self._width = width
         self._height = height
+
+    def get_area(self):
+        return self._height * self._width
+    
+    def get_perimeter(self):
+        return math.sqrt(self._height ** 2 + self._width ** 2)
