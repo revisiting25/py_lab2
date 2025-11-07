@@ -41,3 +41,10 @@ class Circle(Shape):
         if not isinstance(other, Circle):
             return NotImplemented
         return self._radius > other._radius
+    
+
+    def __repr__(self):
+        return f"Circle(radius={self._radius}, center: (x,y)=({self._x}, {self._y}))"
+
+    def __str__(self):
+        return f"Circle with radius {self._radius} and center at (x,y)=({self._x}, {self._y})"

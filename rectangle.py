@@ -39,3 +39,10 @@ class Rectangle(Shape):
         if not isinstance(other, Rectangle):
             return NotImplemented
         return self.get_area() > other.get_area()
+    
+
+    def __repr__(self):
+        return f"Rectangle(width={self._width}, height={self._height}, center: (x,y)=({self._x}, {self._y}))"
+
+    def __str__(self):
+        return f"Rectangle {self._width}x{self._height} (area={self.get_area()} and center at (x,y)=({self._x}, {self._y})"
