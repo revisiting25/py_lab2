@@ -10,3 +10,7 @@ class Shape:
     def get_y(self):
         return self._y
 
+
+    def translate(self, dx, dy):
+        self._x += dx
+        self._y += dy
