@@ -12,10 +12,30 @@ class Rectangle(Shape):
         return self._height * self._width
     
     def get_perimeter(self):
-        return math.sqrt(self._height ** 2 + self._width ** 2)
+        return self._height * 2 + self._width * 2
     
     def __eq__(self, value):
         if isinstance(value, Rectangle):
             return self.get_area() == value.get_area()
         else:
             return False
+        
+    def __le__(self, other):
+        if not isinstance(other, Rectangle):
+            return NotImplemented
+        return self.get_area() <= other.get_area()
+    
+    def __lt__(self, other):
+        if not isinstance(other, Rectangle):
+            return NotImplemented
+        return self.get_area() < other.get_area()
+    
+    def __ge__(self, other):
+        if not isinstance(other, Rectangle):
+            return NotImplemented
+        return self.get_area() >= other.get_area()
+    
+    def __gt__(self, other):
+        if not isinstance(other, Rectangle):
+            return NotImplemented
+        return self.get_area() > other.get_area()

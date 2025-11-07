@@ -21,3 +21,23 @@ class Circle(Shape):
             return self._radius == value._radius
         else:
             return False
+        
+    def __le__(self, other):
+        if not isinstance(other, Circle):
+            return NotImplemented
+        return self._radius <= other._radius
+    
+    def __lt__(self, other):
+        if not isinstance(other, Circle):
+            return NotImplemented
+        return self._radius < other._radius
+    
+    def __ge__(self, other):
+        if not isinstance(other, Circle):
+            return NotImplemented
+        return self._radius >= other._radius
+    
+    def __gt__(self, other):
+        if not isinstance(other, Circle):
+            return NotImplemented
+        return self._radius > other._radius
