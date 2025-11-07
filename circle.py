@@ -4,6 +4,10 @@ import math
 class Circle(Shape):
     def __init__(self, x = 0, y = 0, radius = 1):
         super().__init(x, y)
+        if not isinstance(radius, (int, float)):
+            raise TypeError("Radius must be a numerical value (int or float).")
+        if radius <= 0:
+            raise ValueError("Radius must be greater than zero.")
 
         self._radius = radius
 

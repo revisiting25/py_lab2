@@ -4,6 +4,12 @@ from shape import Shape
 class Rectangle(Shape):
     def __init__(self, x = 0, y = 0, width = 1, height = 1):
         super().__init__(x, y)
+        if not isinstance(width, (int, float)):
+            raise TypeError("Width must be a numerical value (int or float).")
+        if not isinstance(height, (int, float)):
+            raise TypeError("Height must be a numerical value (int or float).")
+        if width <= 0 or height <= 0:
+            raise ValueError("Width and height must be greater than zero.")
 
         self._width = width
         self._height = height
@@ -46,3 +52,4 @@ class Rectangle(Shape):
 
     def __str__(self):
         return f"Rectangle {self._width}x{self._height} (area={self.get_area()} and center at (x,y)=({self._x}, {self._y})"
+
