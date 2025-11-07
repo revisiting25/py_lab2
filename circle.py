@@ -15,3 +15,9 @@ class Circle(Shape):
     
     def get_perimeter(self):
         return math.pi * self._radius * 2
+    
+    def __eq__(self, value):
+        if isinstance(value, Circle):
+            return self._radius == value._radius
+        else:
+            return False

@@ -13,3 +13,9 @@ class Rectangle(Shape):
     
     def get_perimeter(self):
         return math.sqrt(self._height ** 2 + self._width ** 2)
+    
+    def __eq__(self, value):
+        if isinstance(value, Rectangle):
+            return self.get_area() == value.get_area()
+        else:
+            return False
