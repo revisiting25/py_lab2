@@ -20,6 +20,13 @@ class Rectangle(Shape):
     def get_perimeter(self):
         return self._height * 2 + self._width * 2
     
+    def is_square(self):
+        return self._height == 1 and self._width == 1
+    
+    def is_unit_square(self):
+        return self._x == 0 and self._y == 0 and self._height == 1 and self._width == 1
+    
+    
     def __eq__(self, value):
         if isinstance(value, Rectangle):
             return self.get_area() == value.get_area()

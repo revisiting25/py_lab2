@@ -20,6 +20,10 @@ class Circle(Shape):
     def get_perimeter(self):
         return math.pi * self._radius * 2
     
+    def is_unit_circle(self):
+        return self._radius == 1 and self._x == 0 and self._y == 0
+    
+    
     def __eq__(self, value):
         if isinstance(value, Circle):
             return self._radius == value._radius
