@@ -21,9 +21,11 @@ class Circle(Shape):
         return math.pi * self._radius * 2
     
     def is_unit_circle(self):
+        """Check if the circle is the unit circle and return True if radius = 1 and center at (x,y)=(0,0)"""
         return self._radius == 1 and self._x == 0 and self._y == 0
     
     
+    # Operator overrides
     def __eq__(self, value):
         if isinstance(value, Circle):
             return self._radius == value._radius

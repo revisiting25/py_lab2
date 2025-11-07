@@ -14,6 +14,7 @@ class Shape:
 
 
     def translate(self, dx, dy):
+        """Move the shape dx and dy."""
         if not (isinstance(dx, (int, float)) and isinstance(dy, (int, float))):
             raise TypeError("Translation dx and dy must be numerical values (int or float).")
         self._x += dx

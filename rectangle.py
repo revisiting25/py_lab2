@@ -1,4 +1,3 @@
-import math
 from shape import Shape
 
 class Rectangle(Shape):
@@ -21,12 +20,14 @@ class Rectangle(Shape):
         return self._height * 2 + self._width * 2
     
     def is_square(self):
-        return self._height == 1 and self._width == 1
+        """Check if the rectangle is a square and return True if width = height."""
+        return self._height == self._width 
     
     def is_unit_square(self):
+        """Check if the rectangle is the unit square."""
         return self._x == 0 and self._y == 0 and self._height == 1 and self._width == 1
     
-    
+    # Operator overrides
     def __eq__(self, value):
         if isinstance(value, Rectangle):
             return self.get_area() == value.get_area()
