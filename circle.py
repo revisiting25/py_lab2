@@ -1,6 +1,8 @@
 from shape import Shape
+from functools import total_ordering 
 import math
 
+@total_ordering
 class Circle(Shape):
     def __init__(self, x = 0, y = 0, radius = 1):
         super().__init(x, y)
@@ -11,46 +13,52 @@ class Circle(Shape):
 
         self._radius = radius
 
-    def get_radius(self):
+    @property
+    def radius(self):
         return self._radius
-    
-    def get_area(self):
+
+    @property
+    def area(self):
         return math.pi * (self._radius ** 2)
     
-    def get_perimeter(self):
+    @property
+    def perimeter(self):
         return math.pi * self._radius * 2
     
+
     def is_unit_circle(self):
         """Check if the circle is the unit circle and return True if radius = 1 and center at (x,y)=(0,0)"""
-        return self._radius == 1 and self._x == 0 and self._y == 0
-    
+        return (
+            math.isclose(self._radius, 1.0) and
+            math.isclose(self._x, 0.0) and
+            math.isclose(self._y, 0.0)
+        )
     
     # Operator overrides
-    def __eq__(self, value):
-        if isinstance(value, Circle):
-            return self._radius == value._radius
-        else:
-            return False
+    def __eq__(self, other):
+        return isinstance(other, Circle) and math.isclose(self._radius, other._radius)
         
-    def __le__(self, other):
-        if not isinstance(other, Circle):
-            return NotImplemented
-        return self._radius <= other._radius
-    
+    # Thanks to @total_ordering, we only need to define __lt__ and __eq__
     def __lt__(self, other):
         if not isinstance(other, Circle):
             return NotImplemented
         return self._radius < other._radius
     
-    def __ge__(self, other):
-        if not isinstance(other, Circle):
-            return NotImplemented
-        return self._radius >= other._radius
+    ## The following comparison methods are not needed due to @total_ordering
+    # def __le__(self, other):
+    #     if not isinstance(other, Circle):
+    #         return NotImplemented
+    #     return self._radius <= other._radius
     
-    def __gt__(self, other):
-        if not isinstance(other, Circle):
-            return NotImplemented
-        return self._radius > other._radius
+    # def __ge__(self, other):
+    #     if not isinstance(other, Circle):
+    #         return NotImplemented
+    #     return self._radius >= other._radius
+    
+    # def __gt__(self, other):
+    #     if not isinstance(other, Circle):
+    #         return NotImplemented
+    #     return self._radius > other._radius
     
 
     def __repr__(self):

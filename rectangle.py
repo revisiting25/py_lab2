@@ -1,5 +1,8 @@
 from shape import Shape
+import math
+from functools import total_ordering
 
+@total_ordering
 class Rectangle(Shape):
     def __init__(self, x = 0, y = 0, width = 1, height = 1):
         super().__init__(x, y)
@@ -13,11 +16,13 @@ class Rectangle(Shape):
         self._width = width
         self._height = height
 
-    def get_area(self):
-        return self._height * self._width
-    
-    def get_perimeter(self):
-        return self._height * 2 + self._width * 2
+    @property
+    def area(self):
+        return self._width * self._height
+
+    @property
+    def perimeter(self):
+        return 2 * (self._width + self._height)
     
     def is_square(self):
         """Check if the rectangle is a square and return True if width = height."""
@@ -25,7 +30,12 @@ class Rectangle(Shape):
     
     def is_unit_square(self):
         """Check if the rectangle is the unit square."""
-        return self._x == 0 and self._y == 0 and self._height == 1 and self._width == 1
+        return (
+            math.isclose(self._width, 1.0)
+            and math.isclose(self._height, 1.0)
+            and math.isclose(self._x, 0.0)
+            and math.isclose(self._y, 0.0)
+        )
     
     # Operator overrides
     def __eq__(self, value):
@@ -33,26 +43,27 @@ class Rectangle(Shape):
             return self.get_area() == value.get_area()
         else:
             return False
-        
-    def __le__(self, other):
-        if not isinstance(other, Rectangle):
-            return NotImplemented
-        return self.get_area() <= other.get_area()
-    
+
+    ## Thanks to @total_ordering, we only need to define __lt__ and __eq__
     def __lt__(self, other):
         if not isinstance(other, Rectangle):
             return NotImplemented
         return self.get_area() < other.get_area()
     
-    def __ge__(self, other):
-        if not isinstance(other, Rectangle):
-            return NotImplemented
-        return self.get_area() >= other.get_area()
+    # def __le__(self, other):
+    #     if not isinstance(other, Rectangle):
+    #         return NotImplemented
+    #     return self.get_area() <= other.get_area()
     
-    def __gt__(self, other):
-        if not isinstance(other, Rectangle):
-            return NotImplemented
-        return self.get_area() > other.get_area()
+    # def __ge__(self, other):
+    #     if not isinstance(other, Rectangle):
+    #         return NotImplemented
+    #     return self.get_area() >= other.get_area()
+    
+    # def __gt__(self, other):
+    #     if not isinstance(other, Rectangle):
+    #         return NotImplemented
+    #     return self.get_area() > other.get_area()
     
 
     def __repr__(self):
