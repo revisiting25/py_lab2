@@ -36,6 +36,7 @@ class Circle(Shape):
     
     # Operator overrides
     def __eq__(self, other):
+        """Check equality based on radius."""
         return isinstance(other, Circle) and math.isclose(self._radius, other._radius)
         
     # Thanks to @total_ordering, we only need to define __lt__ and __eq__
@@ -61,7 +62,7 @@ class Circle(Shape):
     #     return self._radius > other._radius
 
     def draw(self, ax):
-        """Ritar cirkeln i en given matplotlib-ax.
+        """Draw the circle in given matplotlib-ax.
         """
         import matplotlib.patches as mpatches
 
