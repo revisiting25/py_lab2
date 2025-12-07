@@ -5,7 +5,7 @@ import math
 @total_ordering
 class Circle(Shape):
     def __init__(self, x = 0, y = 0, radius = 1):
-        super().__init(x, y)
+        super().__init__(x, y)
         if not isinstance(radius, (int, float)):
             raise TypeError("Radius must be a numerical value (int or float).")
         if radius <= 0:
@@ -59,6 +59,20 @@ class Circle(Shape):
     #     if not isinstance(other, Circle):
     #         return NotImplemented
     #     return self._radius > other._radius
+
+    def draw(self, ax):
+        """Ritar cirkeln i en given matplotlib-ax.
+        """
+        import matplotlib.patches as mpatches
+
+        circle_patch = mpatches.Circle(
+            (self._x, self._y),
+            self._radius,
+            edgecolor='blue',
+            facecolor='none',
+            linewidth=2
+        )
+        ax.add_patch(circle_patch)
     
 
     def __repr__(self):
@@ -66,3 +80,4 @@ class Circle(Shape):
 
     def __str__(self):
         return f"Circle with radius {self._radius} and center at (x,y)=({self._x}, {self._y})"
+    

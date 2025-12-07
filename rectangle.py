@@ -64,6 +64,21 @@ class Rectangle(Shape):
     #     if not isinstance(other, Rectangle):
     #         return NotImplemented
     #     return self.get_area() > other.get_area()
+
+    def draw(self, ax):
+        """Ritar rektangeln i en given matplotlib-ax.
+        """
+        import matplotlib.patches as mpatches
+
+        rectangle_patch = mpatches.Rectangle(
+            (self._x, self._y),
+            self._width,
+            self._height,
+            edgecolor='blue',
+            facecolor='none',
+            linewidth=2
+        )
+        ax.add_patch(rectangle_patch)
     
 
     def __repr__(self):
