@@ -6,10 +6,12 @@ class Shape:
         self._x = x
         self._y = y
 
-    def get_x(self):
+    @property
+    def x(self):
         return self._x
 
-    def get_y(self):
+    @property
+    def y(self):
         return self._y
 
 
