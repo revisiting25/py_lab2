@@ -40,7 +40,7 @@ class Rectangle(Shape):
     # Operator overrides
     def __eq__(self, value):
         if isinstance(value, Rectangle):
-            return self.get_area() == value.get_area()
+            return self.area == value.area
         else:
             return False
 
@@ -48,7 +48,7 @@ class Rectangle(Shape):
     def __lt__(self, other):
         if not isinstance(other, Rectangle):
             return NotImplemented
-        return self.get_area() < other.get_area()
+        return self.area < other.area
     
     # def __le__(self, other):
     #     if not isinstance(other, Rectangle):
@@ -66,7 +66,7 @@ class Rectangle(Shape):
     #     return self.get_area() > other.get_area()
 
     def draw(self, ax):
-        """Ritar rektangeln i en given matplotlib-ax.
+        """Draw the rectangle in given matplotlib-ax.
         """
         import matplotlib.patches as mpatches
 
@@ -85,5 +85,5 @@ class Rectangle(Shape):
         return f"Rectangle(width={self._width}, height={self._height}, center: (x,y)=({self._x}, {self._y}))"
 
     def __str__(self):
-        return f"Rectangle {self._width}x{self._height} (area={self.get_area()} and center at (x,y)=({self._x}, {self._y})"
+        return f"Rectangle {self._width}x{self._height} (area={self.area} and center at (x,y)=({self._x}, {self._y})"
 
